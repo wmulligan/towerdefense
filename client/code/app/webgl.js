@@ -38,7 +38,7 @@ function init() {
 
 	scene.add( new THREE.AmbientLight( 0x808080 ) );
 
-	light = new THREE.SpotLight( 0xffffff, 1.25 );
+	light = new THREE.DirectionalLight ( 0xffffff, 1.25 );
 	light.position.set( - 500, 900, 600 );
 	light.target.position.set( halfsizeres, 0, halfsizeres );
 	light.castShadow = true;
@@ -48,12 +48,12 @@ function init() {
 	//light.shadowCameraFar = camera.far;
 	//light.shadowCameraFov = 50;
 	//light.shadowMapBias = 0.0001;
-	//light.shadowMapDarkness = 0.5;
+	light.shadowMapDarkness = 0.2;
 	scene.add( light );
 
-	geometry = new THREE.CubeGeometry( size, size, size );
+	geometry = new THREE.CubeGeometry( size-1, size-1, size-1 );
 	geometry.applyMatrix( new THREE.Matrix4().setTranslation( 0, size / 2, 0 ) );
-	material = new THREE.MeshLambertMaterial( { color: 0xd0d0d0 } );
+	material = new THREE.MeshLambertMaterial( { color: 0x666666 } );
 
 	for ( var i = 0, l = res * res; i < l; i ++ ) {
 
